@@ -57,6 +57,7 @@ public class EventReceiver implements EventProducer {
     private boolean isEventDuplicatedInCluster;
     private boolean traceEnabled = false;
     private boolean statisticsEnabled = false;
+    private boolean processEnabled;
     private Counter eventCounter;
     private boolean customMappingEnabled = false;
     private boolean isWorkerNode = false;
@@ -83,6 +84,7 @@ public class EventReceiver implements EventProducer {
 
         if (this.eventReceiverConfiguration != null) {
             this.traceEnabled = eventReceiverConfiguration.isTraceEnabled();
+            this.processEnabled = eventReceiverConfiguration.isProcessingEnabled();
             this.statisticsEnabled = eventReceiverConfiguration.isStatisticsEnabled() &&
                     EventReceiverServiceValueHolder.isGlobalStatisticsEnabled();
             this.customMappingEnabled = eventReceiverConfiguration.getInputMapping().isCustomMappingEnabled();
@@ -237,6 +239,7 @@ public class EventReceiver implements EventProducer {
         if (traceEnabled) {
             trace.info(beforeTracerPrefix + obj.toString());
         }
+
         if (obj instanceof List) {
             for (Object object : (List) obj) {
                 try {
@@ -272,6 +275,9 @@ public class EventReceiver implements EventProducer {
         }
         if (statisticsEnabled) {
             eventCounter.inc();
+        }
+        if (!processEnabled) {
+            return;
         }
 //
 //        long timestamp = event.getTimeStamp();

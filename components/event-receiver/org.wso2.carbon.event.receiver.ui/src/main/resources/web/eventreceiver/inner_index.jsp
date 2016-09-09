@@ -177,6 +177,41 @@
                         </div>
                     </div>
 
+                    <% }
+                    if (eventReceiverDetails.getEnableProcessing()) { %>
+                       <div class="inlineDiv">
+                           <div id="disableProcessing<%= eventReceiverDetails.getEventReceiverName()%>">
+                               <a href="#"
+                                     onclick="disableReceiverProcessing('<%= eventReceiverDetails.getEventReceiverName() %>')"
+                                     class="icon-link"
+                                     style="background-image:url(images/process-disabled.png);">Disable Processing </a>
+                          </div>
+                          <div id="enableProcessing<%= eventReceiverDetails.getEventReceiverName()%>"
+                               style="display:none;">
+                                <a href="#"
+                                      onclick="enableReceiverProcessing('<%= eventReceiverDetails.getEventReceiverName() %>')"
+                                      class="icon-link"
+                                      style="background-image:url(images/process-enabled.png);">Enable Processing </a>
+                          </div>
+
+                       </div>
+                    <% } else { %>
+                       <div class="inlineDiv">
+                            <div id="enableProcessing<%= eventReceiverDetails.getEventReceiverName()%>">
+                                  <a href="#"
+                                       onclick="enableReceiverProcessing('<%= eventReceiverDetails.getEventReceiverName() %>')"
+                                       class="icon-link"
+                                       style="background-image:url(images/process-enabled.png);">Enable Processing </a>
+                           </div>
+                          <div id="disableProcessing<%= eventReceiverDetails.getEventReceiverName()%>"
+                                  style="display:none">
+                                  <a href="#"
+                                        onclick="disableReceiverProcessing('<%= eventReceiverDetails.getEventReceiverName() %>')"
+                                        class="icon-link"
+                                        style="background-image:url(images/process-disabled.png);">Disable Processing </a>
+                           </div>
+
+                       </div>
                     <% } %>
 
 

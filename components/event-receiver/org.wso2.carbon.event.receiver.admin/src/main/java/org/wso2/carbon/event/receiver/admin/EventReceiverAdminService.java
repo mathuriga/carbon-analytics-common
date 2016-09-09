@@ -67,6 +67,7 @@ public class EventReceiverAdminService extends AbstractAdmin {
                 eventReceiverConfigurationInfoDtoArray[index].setEnableStats(eventReceiverConfiguration.isStatisticsEnabled());
                 eventReceiverConfigurationInfoDtoArray[index].setEnableTracing(eventReceiverConfiguration.isTraceEnabled());
                 eventReceiverConfigurationInfoDtoArray[index].setEditable(eventReceiverConfiguration.isEditable());
+                eventReceiverConfigurationInfoDtoArray[index].setEnableProcessing(eventReceiverConfiguration.isProcessingEnabled());
             }
             Arrays.sort(eventReceiverConfigurationInfoDtoArray, new Comparator() {
 
@@ -108,6 +109,7 @@ public class EventReceiverAdminService extends AbstractAdmin {
                 eventReceiverConfigurationInfoDtoArray[index].setEnableStats(eventReceiverConfiguration.isStatisticsEnabled());
                 eventReceiverConfigurationInfoDtoArray[index].setEnableTracing(eventReceiverConfiguration.isTraceEnabled());
                 eventReceiverConfigurationInfoDtoArray[index].setEditable(eventReceiverConfiguration.isEditable());
+                eventReceiverConfigurationInfoDtoArray[index].setEnableProcessing(eventReceiverConfiguration.isProcessingEnabled());
             }
             Arrays.sort(eventReceiverConfigurationInfoDtoArray, new Comparator() {
 
@@ -376,6 +378,7 @@ public class EventReceiverAdminService extends AbstractAdmin {
                 EventReceiverService eventReceiverService = EventReceiverAdminServiceValueHolder.getEventReceiverService();
 
                 EventReceiverConfiguration eventReceiverConfiguration = new EventReceiverConfiguration();
+                eventReceiverConfiguration.setProcessEnabled(true);
 
                 eventReceiverConfiguration.setEventReceiverName(eventReceiverName);
                 String[] toStreamProperties = streamNameWithVersion.split(":");
@@ -440,7 +443,7 @@ public class EventReceiverAdminService extends AbstractAdmin {
                 EventReceiverService eventReceiverService = EventReceiverAdminServiceValueHolder.getEventReceiverService();
 
                 EventReceiverConfiguration eventReceiverConfiguration = new EventReceiverConfiguration();
-
+                eventReceiverConfiguration.setProcessEnabled(true);
                 eventReceiverConfiguration.setEventReceiverName(eventReceiverName);
                 String[] toStreamProperties = streamNameWithVersion.split(":");
                 eventReceiverConfiguration.setToStreamName(toStreamProperties[0]);
@@ -489,7 +492,7 @@ public class EventReceiverAdminService extends AbstractAdmin {
                 EventReceiverService eventReceiverService = EventReceiverAdminServiceValueHolder.getEventReceiverService();
 
                 EventReceiverConfiguration eventReceiverConfiguration = new EventReceiverConfiguration();
-
+                eventReceiverConfiguration.setProcessEnabled(true);
                 eventReceiverConfiguration.setEventReceiverName(eventReceiverName);
                 String[] toStreamProperties = streamNameWithVersion.split(":");
                 eventReceiverConfiguration.setToStreamName(toStreamProperties[0]);
@@ -545,7 +548,7 @@ public class EventReceiverAdminService extends AbstractAdmin {
                 EventReceiverService eventReceiverService = EventReceiverAdminServiceValueHolder.getEventReceiverService();
 
                 EventReceiverConfiguration eventReceiverConfiguration = new EventReceiverConfiguration();
-
+                eventReceiverConfiguration.setProcessEnabled(true);
                 eventReceiverConfiguration.setEventReceiverName(eventReceiverName);
                 String[] toStreamProperties = streamNameWithVersion.split(":");
                 eventReceiverConfiguration.setToStreamName(toStreamProperties[0]);
@@ -594,7 +597,7 @@ public class EventReceiverAdminService extends AbstractAdmin {
                 EventReceiverService eventReceiverService = EventReceiverAdminServiceValueHolder.getEventReceiverService();
 
                 EventReceiverConfiguration eventReceiverConfiguration = new EventReceiverConfiguration();
-
+                eventReceiverConfiguration.setProcessEnabled(true);
                 eventReceiverConfiguration.setEventReceiverName(eventReceiverName);
                 String[] toStreamProperties = streamNameWithVersion.split(":");
                 eventReceiverConfiguration.setToStreamName(toStreamProperties[0]);
@@ -644,6 +647,17 @@ public class EventReceiverAdminService extends AbstractAdmin {
         EventReceiverService eventReceiverService = EventReceiverAdminServiceValueHolder.getEventReceiverService();
         try {
             eventReceiverService.setTraceEnabled(eventReceiverName, flag);
+        } catch (EventReceiverConfigurationException e) {
+            log.error(e.getMessage(), e);
+            throw new AxisFault(e.getMessage());
+        }
+        return true;
+    }
+
+    public boolean setProcessingEnabled(String eventReceiverName, boolean flag) throws AxisFault {
+        EventReceiverService eventReceiverService = EventReceiverAdminServiceValueHolder.getEventReceiverService();
+        try {
+            eventReceiverService.setProcessEnabled(eventReceiverName, flag);
         } catch (EventReceiverConfigurationException e) {
             log.error(e.getMessage(), e);
             throw new AxisFault(e.getMessage());
@@ -789,6 +803,21 @@ public class EventReceiverAdminService extends AbstractAdmin {
             }
         }
         return isTraceEnabled;
+    }
+
+    public boolean isReceiverProcessEnabled(String eventReceiverName) {
+        EventReceiverService eventReceiverService = EventReceiverAdminServiceValueHolder.getEventReceiverService();
+        List<EventReceiverConfiguration> eventReceiverConfigurationList = null;
+        boolean isProcessEnabled = true;
+        eventReceiverConfigurationList = eventReceiverService.getAllActiveEventReceiverConfigurations();
+        Iterator eventReceiverConfigurationIterator = eventReceiverConfigurationList.iterator();
+        while (eventReceiverConfigurationIterator.hasNext()) {
+            EventReceiverConfiguration eventReceiverConfiguration = (EventReceiverConfiguration) eventReceiverConfigurationIterator.next();
+            if (eventReceiverConfiguration.getEventReceiverName().equalsIgnoreCase(eventReceiverName)) {
+                isProcessEnabled = eventReceiverConfiguration.isProcessingEnabled();
+            }
+        }
+        return isProcessEnabled;
     }
 
 }

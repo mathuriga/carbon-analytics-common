@@ -38,6 +38,10 @@
             stub.setTracingEnabled(eventAdapterType, true);
         } else if ("disableTracing".equals(action)) {
             stub.setTracingEnabled(eventAdapterType, false);
+        }else if ("enableProcessing".equals(action)){
+            stub.setProcessingEnabled(eventAdapterType,true);
+        }else if("disableProcessing".equals(action)){
+            stub.setProcessingEnabled(eventAdapterType,false);
         }
     }
 

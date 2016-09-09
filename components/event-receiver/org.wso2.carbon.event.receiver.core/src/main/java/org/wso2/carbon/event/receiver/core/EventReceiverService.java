@@ -130,6 +130,16 @@ public interface EventReceiverService {
             throws EventReceiverConfigurationException;
 
     /**
+     * Enable or disable processing for the event receiver of given name
+     *
+     * @param eventReceiverName  event receiver name
+     * @param processEnabled {@code true} or {@code false} specifying whether statistics is enabled or not
+     */
+    public void setProcessEnabled(String eventReceiverName, boolean processEnabled)
+            throws EventReceiverConfigurationException;
+
+
+    /**
      * Returns the deployment status and dependency information as a formatted string for event receiver associated
      * with the filename specified
      *

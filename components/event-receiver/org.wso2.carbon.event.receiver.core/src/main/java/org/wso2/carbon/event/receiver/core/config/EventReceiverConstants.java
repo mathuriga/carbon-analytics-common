@@ -99,6 +99,7 @@ public final class EventReceiverConstants {
     public static final String EVENT_TRACE_LOGGER = "EVENT_TRACE_LOGGER";
     public static final String ER_ATTR_TRACE_ENABLED = "trace";
     public static final String ER_ATTR_STATISTICS_ENABLED = "statistics";
+    public static final String ER_ATTR_PROCESSING = "processing";
     public static final String ER_ATTR_CUSTOM_MAPPING_ENABLED = "customMapping";
     public static final String ENABLE_CONST = "enable";
     public static final String DISABLE_CONST = "disable";

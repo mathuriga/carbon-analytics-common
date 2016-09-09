@@ -22,6 +22,7 @@ var ENABLE = "enable";
 var DISABLE = "disable";
 var STAT = "statistics";
 var TRACE = "Tracing";
+var PROCESS = "Processing"
 
 jQuery(document).ready(function () {
     // Resetting because firefox will not clear the previous form data on a reset.
@@ -79,11 +80,16 @@ function handleCallback(eventReceiverName, action, type) {
             element.style.display = "";
             element = document.getElementById("enableStat" + eventReceiverName);
             element.style.display = "none";
-        } else {
+        } else if(type=="Tracing"){
             element = document.getElementById("disableTracing" + eventReceiverName);
             element.style.display = "";
             element = document.getElementById("enableTracing" + eventReceiverName);
             element.style.display = "none";
+        }else if(type=="Processing"){
+            element=document.getElementById("disableProcessing"+ eventReceiverName);
+            element.style.display="";
+            element=document.getElementById("enableProcessing"+eventReceiverName);
+            element.style.display="none";
         }
     } else {
         if (type == "statistics") {
@@ -91,12 +97,17 @@ function handleCallback(eventReceiverName, action, type) {
             element.style.display = "none";
             element = document.getElementById("enableStat" + eventReceiverName);
             element.style.display = "";
-        } else {
+        } else if(type=="Tracing"){
             element = document.getElementById("disableTracing" + eventReceiverName);
             element.style.display = "none";
             element = document.getElementById("enableTracing" + eventReceiverName);
             element.style.display = "";
-        }
+        }else if(type=="Processing"){
+            element=document.getElementById("disableProcessing"+ eventReceiverName);
+            element.style.display="none";
+            element=document.getElementById("enableProcessing"+eventReceiverName);
+            element.style.display="";
+    }
     }
 }
 
@@ -129,6 +140,32 @@ function disableReceiverTracing(eventReceiverName) {
             CARBON.showErrorDialog('<fmt:message key="trace.disable.error"/>' +
                 ' ' + eventReceiverName);
         }
+    });
+}
+
+function enableReceiverProcessing(eventReceiverName){
+    jQuery.ajax({
+        type: 'POST',
+        url:'../eventreceiver/stat_tracing-ajaxprocessor.jsp',
+        data: 'eventReceiverName=' + eventReceiverName + '&action=enableProcessing',
+        async: false,
+        success: function (msg){
+            handleCallback(eventReceiverName, ENABLE, PROCESS)
+        }
+
+    });
+}
+
+function disableReceiverProcessing(eventReceiverName){
+    jQuery.ajax({
+        type: 'POST',
+        url:'../eventreceiver/stat_tracing-ajaxprocessor.jsp',
+        data: 'eventReceiverName=' + eventReceiverName + '&action=disableProcessing',
+        async: false,
+        success: function (msg){
+            handleCallback(eventReceiverName, DISABLE, PROCESS)
+        }
+
     });
 }
 

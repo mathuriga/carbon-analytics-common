@@ -110,6 +110,7 @@
             boolean editable = stub.isPublisherEditable(eventPublisherName);
             boolean statEnabled = stub.isPublisherStatisticsEnabled(eventPublisherName);
             boolean traceEnabled = stub.isPublisherTraceEnabled(eventPublisherName);
+            boolean processEnabled= stub.isPublisherProcessingEnabled(eventPublisherName);
         %>
         <% if (editable) { %>
             <% if (statEnabled) {%>
@@ -186,7 +187,42 @@
             </div>
         </div>
 
-        <% } %>
+        <% }
+            if (processEnabled) { %>
+        <div style="display: inline-block">
+           <div id="disableProcessing<%= eventPublisherName%>">
+               <a href="#"
+                   onclick="disablePublisherProcessing('<%= eventPublisherName %>')"
+                   class="icon-link"
+                   style="background-image:url(images/process-disabled.png);">Disable Processing </a>
+           </div>
+           <div id="enableProcessing<%= eventPublisherName%>"
+                   style="display:none;">
+                   <a href="#"
+                   onclick="enablePublisherProcessing('<%= eventPublisherName %>')"
+                   class="icon-link"
+                   style="background-image:url(images/process-enabled.png);">Enable Processing </a>
+           </div>
+
+           </div>
+           <% } else { %>
+           <div style="display: inline-block">
+            <div id="enableProcessing<%= eventPublisherName %>">
+                  <a href="#"
+                       onclick="enablePublisherProcessing('<%= eventPublisherName %>')"
+                       class="icon-link"
+                       style="background-image:url(images/process-enabled.png);">Enable Processing </a>
+           </div>
+          <div id="disableProcessing<%= eventPublisherName %>"
+                  style="display:none">
+                  <a href="#"
+                        onclick="disablePublisherProcessing('<%= eventPublisherName %>')"
+                        class="icon-link"
+                        style="background-image:url(images/process-disabled.png);">Disable Processing </a>
+           </div>
+
+       </div>
+    <% } %>
 
         <div style="display: inline-block">
             <a style="background-image: url(../admin/images/delete.gif);"

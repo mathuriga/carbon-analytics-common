@@ -181,6 +181,41 @@
                 </div>
             </div>
 
+            <% }
+                if (stub.isReceiverProcessEnabled(eventReceiverName)) { %>
+           <div style="display: inline-block">
+               <div id="disableProcessing<%= eventReceiverName%>">
+                   <a href="#"
+                         onclick="disableReceiverProcessing('<%= eventReceiverName %>')"
+                         class="icon-link"
+                         style="background-image:url(images/process-disabled.png);">Disable Processing </a>
+              </div>
+              <div id="enableProcessing<%= eventReceiverName%>"
+                   style="display:none;">
+                    <a href="#"
+                          onclick="enableReceiverProcessing('<%= eventReceiverName %>')"
+                          class="icon-link"
+                          style="background-image:url(images/process-enabled.png);">Enable Processing </a>
+              </div>
+
+           </div>
+            <% } else { %>
+               <div style="display: inline-block">
+                    <div id="enableProcessing<%= eventReceiverName%>">
+                          <a href="#"
+                               onclick="enableReceiverProcessing('<%= eventReceiverName %>')"
+                               class="icon-link"
+                               style="background-image:url(images/process-enabled.png);">Enable Processing </a>
+                   </div>
+                  <div id="disableProcessing<%= eventReceiverName %>"
+                          style="display:none">
+                          <a href="#"
+                                onclick="disableReceiverProcessing('<%= eventReceiverName %>')"
+                                class="icon-link"
+                                style="background-image:url(images/process-disabled.png);">Disable Processing </a>
+                   </div>
+
+               </div>
             <% } %>
 
             <div style="display: inline-block">

@@ -259,7 +259,7 @@ public class CarbonEventReceiverService implements EventReceiverService {
             throws EventReceiverConfigurationException {
         EventReceiverConfiguration eventReceiverConfiguration = getActiveEventReceiverConfiguration(eventReceiverName);
         eventReceiverConfiguration.setStatisticsEnabled(statisticsEnabled);
-        editTracingStatistics(eventReceiverConfiguration, eventReceiverName);
+        editTracingStatisticsProcessing(eventReceiverConfiguration, eventReceiverName);
     }
 
     @Override
@@ -267,7 +267,19 @@ public class CarbonEventReceiverService implements EventReceiverService {
             throws EventReceiverConfigurationException {
         EventReceiverConfiguration eventReceiverConfiguration = getActiveEventReceiverConfiguration(eventReceiverName);
         eventReceiverConfiguration.setTraceEnabled(traceEnabled);
-        editTracingStatistics(eventReceiverConfiguration, eventReceiverName);
+        editTracingStatisticsProcessing(eventReceiverConfiguration, eventReceiverName);
+    }
+
+    public void setProcessEnabled(String eventReceiverName, boolean processEnabled)
+            throws EventReceiverConfigurationException {
+        if (processEnabled) {
+            log.info("Event Receiver enabled : " + eventReceiverName);
+        } else {
+            log.info("Event Receiver disabled : " + eventReceiverName);
+        }
+        EventReceiverConfiguration eventReceiverConfiguration = getActiveEventReceiverConfiguration(eventReceiverName);
+        eventReceiverConfiguration.setProcessEnabled(processEnabled);
+        editTracingStatisticsProcessing(eventReceiverConfiguration, eventReceiverName);
     }
 
     @Override
@@ -511,7 +523,7 @@ public class CarbonEventReceiverService implements EventReceiverService {
 
     //Private Methods are below
 
-    private void editTracingStatistics(
+    private void editTracingStatisticsProcessing(
             EventReceiverConfiguration eventReceiverConfiguration,
             String eventReceiverName)
             throws EventReceiverConfigurationException {

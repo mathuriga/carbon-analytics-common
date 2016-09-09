@@ -180,14 +180,14 @@
                                <a href="#"
                                      onclick="disablePublisherProcessing('<%= eventPublisherDetails.getEventPublisherName() %>')"
                                      class="icon-link"
-                                     style="background-image:url(images/disable_processing.gif);">Disable Processing </a>
+                                     style="background-image:url(images/process-disabled.png);">Disable Processing </a>
                           </div>
                           <div id="enableProcessing<%= eventPublisherDetails.getEventPublisherName()%>"
                                style="display:none;">
                                 <a href="#"
                                       onclick="enablePublisherProcessing('<%= eventPublisherDetails.getEventPublisherName() %>')"
                                       class="icon-link"
-                                      style="background-image:url(images/enable_processing.gif);">Enable Processing </a>
+                                      style="background-image:url(images/process-enabled.png);">Enable Processing </a>
                           </div>
 
                        </div>
@@ -197,14 +197,14 @@
                                   <a href="#"
                                        onclick="enablePublisherProcessing('<%= eventPublisherDetails.getEventPublisherName() %>')"
                                        class="icon-link"
-                                       style="background-image:url(images/enable_processing.gif);">Enable Processing </a>
+                                       style="background-image:url(images/process-enabled.png);">Enable Processing </a>
                            </div>
                           <div id="disableProcessing<%= eventPublisherDetails.getEventPublisherName()%>"
                                   style="display:none">
                                   <a href="#"
                                         onclick="disablePublisherProcessing('<%= eventPublisherDetails.getEventPublisherName() %>')"
                                         class="icon-link"
-                                        style="background-image:url(images/disable_processing.gif);">Disable Processing </a>
+                                        style="background-image:url(images/process-disabled.png);">Disable Processing </a>
                            </div>
 
                        </div>

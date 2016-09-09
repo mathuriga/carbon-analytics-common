@@ -26,6 +26,7 @@ public class EventReceiverConfiguration {
     private boolean traceEnabled;
     private boolean statisticsEnabled;
     private boolean isEditable;
+    private boolean processEnabled;
 
     public boolean isTraceEnabled() {
         return traceEnabled;
@@ -90,4 +91,13 @@ public class EventReceiverConfiguration {
     public void setFromAdapterConfiguration(InputEventAdapterConfiguration fromAdapterConfiguration) {
         this.fromAdapterConfiguration = fromAdapterConfiguration;
     }
+
+    public boolean isProcessingEnabled() {
+        return processEnabled;
+    }
+
+    public void setProcessEnabled(boolean processingEnabled) {
+        this.processEnabled = processingEnabled;
+    }
+
 }
