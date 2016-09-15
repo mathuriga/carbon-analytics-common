@@ -26,7 +26,7 @@ public class EventReceiverConfiguration {
     private boolean traceEnabled;
     private boolean statisticsEnabled;
     private boolean isEditable;
-    private boolean processEnabled;
+    private boolean processEnabled=true;
 
     public boolean isTraceEnabled() {
         return traceEnabled;

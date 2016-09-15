@@ -29,7 +29,7 @@ public class EventPublisherConfiguration {
     private boolean enableTracing;
     private boolean enableStatistics;
     private boolean editable;
-    private boolean enableProcessing;
+    private boolean enableProcessing = true;
 
 
     public String getEventPublisherName() {

@@ -151,6 +151,9 @@ public class EventPublisherConfigurationBuilder {
         if (processingEnabledAttribute != null && processingEnabledAttribute.equalsIgnoreCase(EventPublisherConstants.TM_VALUE_DISABLE)) {
             processingEnabled = false;
         }
+//        else{
+//            processingEnabled=true;
+//        }
 
         EventPublisherConfiguration eventPublisherConfiguration = new EventPublisherConfiguration();
 

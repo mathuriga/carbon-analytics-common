@@ -394,7 +394,6 @@ public class EventPublisherAdminService extends AbstractAdmin {
                 EventPublisherService eventPublisherService = EventPublisherAdminServiceValueHolder.getEventPublisherService();
 
                 EventPublisherConfiguration eventPublisherConfiguration = new EventPublisherConfiguration();
-                eventPublisherConfiguration.setProcessEnabled(true);
                 eventPublisherConfiguration.setEventPublisherName(eventPublisherName);
                 String[] fromStreamProperties = streamNameWithVersion.split(":");
                 eventPublisherConfiguration.setFromStreamName(fromStreamProperties[0]);
@@ -479,7 +478,6 @@ public class EventPublisherAdminService extends AbstractAdmin {
                 EventPublisherService eventPublisherService = EventPublisherAdminServiceValueHolder.getEventPublisherService();
 
                 EventPublisherConfiguration eventPublisherConfiguration = new EventPublisherConfiguration();
-                eventPublisherConfiguration.setProcessEnabled(true);
                 eventPublisherConfiguration.setEventPublisherName(eventPublisherName);
                 String[] fromStreamProperties = streamNameWithVersion.split(":");
                 eventPublisherConfiguration.setFromStreamName(fromStreamProperties[0]);
@@ -542,8 +540,6 @@ public class EventPublisherAdminService extends AbstractAdmin {
                 EventPublisherService eventPublisherService = EventPublisherAdminServiceValueHolder.getEventPublisherService();
 
                 EventPublisherConfiguration eventPublisherConfiguration = new EventPublisherConfiguration();
-                eventPublisherConfiguration.setProcessEnabled(true);
-
                 eventPublisherConfiguration.setEventPublisherName(eventPublisherName);
                 String[] fromStreamProperties = streamNameWithVersion.split(":");
                 eventPublisherConfiguration.setFromStreamName(fromStreamProperties[0]);
@@ -589,7 +585,6 @@ public class EventPublisherAdminService extends AbstractAdmin {
                 EventPublisherService eventPublisherService = EventPublisherAdminServiceValueHolder.getEventPublisherService();
 
                 EventPublisherConfiguration eventPublisherConfiguration = new EventPublisherConfiguration();
-                eventPublisherConfiguration.setProcessEnabled(true);
                 eventPublisherConfiguration.setEventPublisherName(eventPublisherName);
                 String[] fromStreamProperties = streamNameWithVersion.split(":");
                 eventPublisherConfiguration.setFromStreamName(fromStreamProperties[0]);
@@ -652,7 +647,6 @@ public class EventPublisherAdminService extends AbstractAdmin {
                 EventPublisherService eventPublisherService = EventPublisherAdminServiceValueHolder.getEventPublisherService();
 
                 EventPublisherConfiguration eventPublisherConfiguration = new EventPublisherConfiguration();
-                eventPublisherConfiguration.setProcessEnabled(true);
                 eventPublisherConfiguration.setEventPublisherName(eventPublisherName);
                 String[] fromStreamProperties = streamNameWithVersion.split(":");
                 eventPublisherConfiguration.setFromStreamName(fromStreamProperties[0]);

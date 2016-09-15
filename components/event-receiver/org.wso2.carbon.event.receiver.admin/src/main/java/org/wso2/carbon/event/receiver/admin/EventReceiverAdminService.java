@@ -378,8 +378,6 @@ public class EventReceiverAdminService extends AbstractAdmin {
                 EventReceiverService eventReceiverService = EventReceiverAdminServiceValueHolder.getEventReceiverService();
 
                 EventReceiverConfiguration eventReceiverConfiguration = new EventReceiverConfiguration();
-                eventReceiverConfiguration.setProcessEnabled(true);
-
                 eventReceiverConfiguration.setEventReceiverName(eventReceiverName);
                 String[] toStreamProperties = streamNameWithVersion.split(":");
                 eventReceiverConfiguration.setToStreamName(toStreamProperties[0]);
@@ -443,7 +441,6 @@ public class EventReceiverAdminService extends AbstractAdmin {
                 EventReceiverService eventReceiverService = EventReceiverAdminServiceValueHolder.getEventReceiverService();
 
                 EventReceiverConfiguration eventReceiverConfiguration = new EventReceiverConfiguration();
-                eventReceiverConfiguration.setProcessEnabled(true);
                 eventReceiverConfiguration.setEventReceiverName(eventReceiverName);
                 String[] toStreamProperties = streamNameWithVersion.split(":");
                 eventReceiverConfiguration.setToStreamName(toStreamProperties[0]);
@@ -492,7 +489,6 @@ public class EventReceiverAdminService extends AbstractAdmin {
                 EventReceiverService eventReceiverService = EventReceiverAdminServiceValueHolder.getEventReceiverService();
 
                 EventReceiverConfiguration eventReceiverConfiguration = new EventReceiverConfiguration();
-                eventReceiverConfiguration.setProcessEnabled(true);
                 eventReceiverConfiguration.setEventReceiverName(eventReceiverName);
                 String[] toStreamProperties = streamNameWithVersion.split(":");
                 eventReceiverConfiguration.setToStreamName(toStreamProperties[0]);
@@ -548,7 +544,6 @@ public class EventReceiverAdminService extends AbstractAdmin {
                 EventReceiverService eventReceiverService = EventReceiverAdminServiceValueHolder.getEventReceiverService();
 
                 EventReceiverConfiguration eventReceiverConfiguration = new EventReceiverConfiguration();
-                eventReceiverConfiguration.setProcessEnabled(true);
                 eventReceiverConfiguration.setEventReceiverName(eventReceiverName);
                 String[] toStreamProperties = streamNameWithVersion.split(":");
                 eventReceiverConfiguration.setToStreamName(toStreamProperties[0]);
@@ -597,7 +592,6 @@ public class EventReceiverAdminService extends AbstractAdmin {
                 EventReceiverService eventReceiverService = EventReceiverAdminServiceValueHolder.getEventReceiverService();
 
                 EventReceiverConfiguration eventReceiverConfiguration = new EventReceiverConfiguration();
-                eventReceiverConfiguration.setProcessEnabled(true);
                 eventReceiverConfiguration.setEventReceiverName(eventReceiverName);
                 String[] toStreamProperties = streamNameWithVersion.split(":");
                 eventReceiverConfiguration.setToStreamName(toStreamProperties[0]);
